@@ -2,7 +2,7 @@ package texthack.patternmatching;
 
 public class KMP {
 
-    void computeLPSArray(String pat, int m, int lps[]) {
+    static void computeLPSArray(String pattern, int m, int lps[]) {
 
         int len = 0;
         lps[0] = 0;
@@ -11,7 +11,7 @@ public class KMP {
 
         while (i < m) {
 
-            if (pat.charAt(i) == pat.charAt(len)) {
+            if (pattern.charAt(i) == pattern.charAt(len)) {
 
                 len++;
                 lps[i] = len;
@@ -29,14 +29,14 @@ public class KMP {
         }
     }
 
-    public void search(String pat, String txt) {
+    public static void search(String text, String pattern) {
 
-        int m = pat.length();
-        int n = txt.length();
+        int m = pattern.length();
+        int n = text.length();
 
         int lps[] = new int[m];
 
-        computeLPSArray(pat, m, lps);
+        computeLPSArray(pattern, m, lps);
 
         int i = 0;
         int j = 0;
@@ -45,7 +45,7 @@ public class KMP {
 
         while (i < n) {
 
-            if (pat.charAt(j) == txt.charAt(i)) {
+            if (pattern.charAt(j) == text.charAt(i)) {
                 i++;
                 j++;
             }
@@ -56,7 +56,7 @@ public class KMP {
                 found = true;
                 j = lps[j - 1];
 
-            } else if (i < n && pat.charAt(j) != txt.charAt(i)) {
+            } else if (i < n && pattern.charAt(j) != text.charAt(i)) {
 
                 if (j != 0)
                     j = lps[j - 1];

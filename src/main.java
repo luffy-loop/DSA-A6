@@ -1,6 +1,13 @@
 import java.util.Scanner;
 import texthack.patternmatching.Naive;
 import texthack.patternmatching.KMP;
+import texthack.patternmatching.RabinKarp;
+import texthack.patternmatching.ZFunction;
+import texthack.patternmatching.MultiPatternMatching;
+import texthack.patternmatching.SuffixArrayLCP;
+import texthack.dynamicprogramming.EditDistance;
+import texthack.dynamicprogramming.NeedlemanWunsch;
+import texthack.dynamicprogramming.SmithWaterman;
 
 public class main {
 
@@ -8,27 +15,116 @@ public class main {
 
         Scanner sc = new Scanner(System.in);
 
-        System.out.print("Enter Text: ");
-        String text = sc.nextLine();
-
-        System.out.print("Enter Pattern: ");
-        String pattern = sc.nextLine();
-
-        System.out.println("\n1. Naive String Matching");
+        System.out.println("1. Naive String Matching");
         System.out.println("2. KMP Algorithm");
-        System.out.print("Enter Choice: ");
+        System.out.println("3. Rabin-Karp Algorithm");
+        System.out.println("4. Z-Function");
+        System.out.println("5. Multi-Pattern Matching");
+        System.out.println("6. Suffix Array + LCP");
+        System.out.println("7. Edit Distance");
+        System.out.println("8. Needleman-Wunsch");
+        System.out.println("9. Smith-Waterman");
 
+        System.out.print("\nEnter Choice: ");
         int choice = sc.nextInt();
+        sc.nextLine();
 
         switch (choice) {
 
             case 1:
-                Naive.search(text, pattern);
+                System.out.print("Enter Text: ");
+                String text1 = sc.nextLine();
+
+                System.out.print("Enter Pattern: ");
+                String pattern1 = sc.nextLine();
+
+                Naive.search(text1, pattern1);
                 break;
 
             case 2:
-                KMP kmp = new KMP();
-                kmp.search(pattern, text);
+                System.out.print("Enter Text: ");
+                String text2 = sc.nextLine();
+
+                System.out.print("Enter Pattern: ");
+                String pattern2 = sc.nextLine();
+
+                KMP.search(text2, pattern2);
+                break;
+
+            case 3:
+                System.out.print("Enter Text: ");
+                String text3 = sc.nextLine();
+
+                System.out.print("Enter Pattern: ");
+                String pattern3 = sc.nextLine();
+
+                RabinKarp.search(text3, pattern3);
+                break;
+
+            case 4:
+                System.out.print("Enter Text: ");
+                String text4 = sc.nextLine();
+
+                System.out.print("Enter Pattern: ");
+                String pattern4 = sc.nextLine();
+
+                ZFunction.search(text4, pattern4);
+                break;
+
+            case 5:
+                System.out.print("Enter Text: ");
+                String text5 = sc.nextLine();
+
+                System.out.print("Enter Number of Patterns: ");
+                int n = sc.nextInt();
+                sc.nextLine();
+
+                String[] patterns = new String[n];
+
+                for (int i = 0; i < n; i++) {
+                    System.out.print("Enter Pattern " + (i + 1) + ": ");
+                    patterns[i] = sc.nextLine();
+                }
+
+                MultiPatternMatching.search(text5, patterns);
+                break;
+
+            case 6:
+                System.out.print("Enter Text: ");
+                String text6 = sc.nextLine();
+
+                SuffixArrayLCP.search(text6);
+                break;
+
+            case 7:
+                System.out.print("Enter First String: ");
+                String a1 = sc.nextLine();
+
+                System.out.print("Enter Second String: ");
+                String b1 = sc.nextLine();
+
+                System.out.println("Edit Distance: " +
+                        EditDistance.editDistance(a1, b1));
+                break;
+
+            case 8:
+                System.out.print("Enter First Sequence: ");
+                String a2 = sc.nextLine();
+
+                System.out.print("Enter Second Sequence: ");
+                String b2 = sc.nextLine();
+
+                NeedlemanWunsch.align(a2, b2);
+                break;
+
+            case 9:
+                System.out.print("Enter First Sequence: ");
+                String a3 = sc.nextLine();
+
+                System.out.print("Enter Second Sequence: ");
+                String b3 = sc.nextLine();
+
+                SmithWaterman.align(a3, b3);
                 break;
 
             default:

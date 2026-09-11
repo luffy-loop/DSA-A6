@@ -1,10 +1,8 @@
 package texthack.dynamicprogramming;
 
-import java.util.Scanner;
-
 public class NeedlemanWunsch {
 
-    static void align(String a, String b) {
+    public static void align(String a, String b) {
 
         int m = a.length();
         int n = b.length();
@@ -15,7 +13,6 @@ public class NeedlemanWunsch {
 
         int[][] dp = new int[m + 1][n + 1];
 
-        // Initialize first row and first column
         for (int i = 0; i <= m; i++) {
             dp[i][0] = i * gap;
         }
@@ -24,7 +21,6 @@ public class NeedlemanWunsch {
             dp[0][j] = j * gap;
         }
 
-        // Fill DP table
         for (int i = 1; i <= m; i++) {
             for (int j = 1; j <= n; j++) {
 
@@ -39,7 +35,6 @@ public class NeedlemanWunsch {
             }
         }
 
-        // Traceback
         StringBuilder alignedA = new StringBuilder();
         StringBuilder alignedB = new StringBuilder();
 
@@ -80,20 +75,5 @@ public class NeedlemanWunsch {
         System.out.println(alignedB.reverse());
 
         System.out.println("\nAlignment Score: " + dp[m][n]);
-    }
-
-    public static void main(String[] args) {
-
-        Scanner sc = new Scanner(System.in);
-
-        System.out.print("Enter first sequence: ");
-        String a = sc.nextLine();
-
-        System.out.print("Enter second sequence: ");
-        String b = sc.nextLine();
-
-        align(a, b);
-
-        sc.close();
     }
 }

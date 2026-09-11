@@ -4,15 +4,22 @@ public class RabinKarp {
 
     static final int MC = 256;
 
-    static void rabinKarp(String text, String pattern, int prime) {
+    public static void search(String text, String pattern) {
 
+        int prime = 101;
         int pLen = pattern.length();
         int tLen = text.length();
+
+        if (pLen > tLen) {
+            System.out.println("Pattern not found");
+            return;
+        }
 
         int pHash = 0;
         int tHash = 0;
         int h = 1;
         int j;
+        boolean found = false;
 
         for (int i = 0; i < pLen - 1; i++) {
             h = (h * MC) % prime;
@@ -34,6 +41,7 @@ public class RabinKarp {
 
                 if (j == pLen) {
                     System.out.println("Pattern found at index " + i);
+                    found = true;
                 }
             }
 
@@ -46,14 +54,8 @@ public class RabinKarp {
                     tHash += prime;
             }
         }
-    }
 
-    public static void main(String[] args) {
-
-        String text = "AABAACAADAABAABA";
-        String pattern = "AABA";
-        int prime = 101;
-
-        rabinKarp(text, pattern, prime);
+        if (!found)
+            System.out.println("Pattern not found");
     }
 }

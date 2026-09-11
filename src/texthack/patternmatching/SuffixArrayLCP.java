@@ -1,11 +1,11 @@
 package texthack.patternmatching;
 
 import java.util.Arrays;
-import java.util.Scanner;
 
 public class SuffixArrayLCP {
 
     static int[] buildSuffixArray(String text) {
+
         int n = text.length();
         Integer[] suffixes = new Integer[n];
 
@@ -26,13 +26,14 @@ public class SuffixArrayLCP {
     }
 
     static int[] buildLCP(String text, int[] suffixArray) {
+
         int n = text.length();
         int[] lcp = new int[n];
 
         for (int i = 1; i < n; i++) {
+
             int a = suffixArray[i - 1];
             int b = suffixArray[i];
-
             int length = 0;
 
             while (a + length < n &&
@@ -47,12 +48,7 @@ public class SuffixArrayLCP {
         return lcp;
     }
 
-    public static void main(String[] args) {
-
-        Scanner sc = new Scanner(System.in);
-
-        System.out.print("Enter text: ");
-        String text = sc.nextLine();
+    public static void search(String text) {
 
         int[] suffixArray = buildSuffixArray(text);
         int[] lcp = buildLCP(text, suffixArray);
@@ -73,7 +69,5 @@ public class SuffixArrayLCP {
                     "LCP[" + i + "] = " + lcp[i]
             );
         }
-
-        sc.close();
     }
 }
