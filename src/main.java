@@ -8,6 +8,7 @@ import texthack.patternmatching.SuffixArrayLCP;
 import texthack.dynamicprogramming.EditDistance;
 import texthack.dynamicprogramming.NeedlemanWunsch;
 import texthack.dynamicprogramming.SmithWaterman;
+import texthack.networkflow.FordFulkerson;
 
 public class main {
 
@@ -24,6 +25,7 @@ public class main {
         System.out.println("7. Edit Distance");
         System.out.println("8. Needleman-Wunsch");
         System.out.println("9. Smith-Waterman");
+        System.out.println("10. Ford-Fulkerson");
 
         System.out.print("\nEnter Choice: ");
         int choice = sc.nextInt();
@@ -125,6 +127,34 @@ public class main {
                 String b3 = sc.nextLine();
 
                 SmithWaterman.align(a3, b3);
+                break;
+
+            case 10:
+                System.out.print("Enter Number of Vertices: ");
+                int v = sc.nextInt();
+
+                int[][] graph = new int[v][v];
+
+                System.out.print("Enter Number of Edges: ");
+                int e = sc.nextInt();
+
+                System.out.println("Enter source destination capacity:");
+
+                for (int i = 0; i < e; i++) {
+                    int u = sc.nextInt();
+                    int w = sc.nextInt();
+                    int capacity = sc.nextInt();
+
+                    graph[u][w] = capacity;
+                }
+
+                System.out.print("Enter Source: ");
+                int source = sc.nextInt();
+
+                System.out.print("Enter Sink: ");
+                int sink = sc.nextInt();
+
+                FordFulkerson.findMaxFlow(graph, source, sink);
                 break;
 
             default:
