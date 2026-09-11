@@ -8,6 +8,8 @@ import texthack.patternmatching.SuffixArrayLCP;
 import texthack.dynamicprogramming.EditDistance;
 import texthack.dynamicprogramming.NeedlemanWunsch;
 import texthack.dynamicprogramming.SmithWaterman;
+import texthack.dynamicprogramming.IntervalDP;
+import texthack.dynamicprogramming.TSP;
 import texthack.networkflow.FordFulkerson;
 
 public class main {
@@ -16,6 +18,7 @@ public class main {
 
         Scanner sc = new Scanner(System.in);
 
+        System.out.println("\n===== DSA ALGORITHMS =====");
         System.out.println("1. Naive String Matching");
         System.out.println("2. KMP Algorithm");
         System.out.println("3. Rabin-Karp Algorithm");
@@ -25,7 +28,9 @@ public class main {
         System.out.println("7. Edit Distance");
         System.out.println("8. Needleman-Wunsch");
         System.out.println("9. Smith-Waterman");
-        System.out.println("10. Ford-Fulkerson");
+        System.out.println("10. Interval DP");
+        System.out.println("11. Bitmask DP - TSP");
+        System.out.println("12. Ford-Fulkerson");
 
         System.out.print("\nEnter Choice: ");
         int choice = sc.nextInt();
@@ -78,12 +83,12 @@ public class main {
                 String text5 = sc.nextLine();
 
                 System.out.print("Enter Number of Patterns: ");
-                int n = sc.nextInt();
+                int n1 = sc.nextInt();
                 sc.nextLine();
 
-                String[] patterns = new String[n];
+                String[] patterns = new String[n1];
 
-                for (int i = 0; i < n; i++) {
+                for (int i = 0; i < n1; i++) {
                     System.out.print("Enter Pattern " + (i + 1) + ": ");
                     patterns[i] = sc.nextLine();
                 }
@@ -130,6 +135,40 @@ public class main {
                 break;
 
             case 10:
+                System.out.print("Enter Number of Matrices: ");
+                int n2 = sc.nextInt();
+
+                int[] p = new int[n2 + 1];
+
+                System.out.println("Enter Matrix Dimensions:");
+
+                for (int i = 0; i <= n2; i++) {
+                    p[i] = sc.nextInt();
+                }
+
+                System.out.println("Minimum Multiplication Cost: " +
+                        IntervalDP.matrixChain(p));
+                break;
+
+            case 11:
+                System.out.print("Enter Number of Cities: ");
+                int n3 = sc.nextInt();
+
+                int[][] cost = new int[n3][n3];
+
+                System.out.println("Enter Cost Matrix:");
+
+                for (int i = 0; i < n3; i++) {
+                    for (int j = 0; j < n3; j++) {
+                        cost[i][j] = sc.nextInt();
+                    }
+                }
+
+                System.out.println("Minimum TSP Cost: " +
+                        TSP.solve(cost));
+                break;
+
+            case 12:
                 System.out.print("Enter Number of Vertices: ");
                 int v = sc.nextInt();
 
@@ -138,7 +177,7 @@ public class main {
                 System.out.print("Enter Number of Edges: ");
                 int e = sc.nextInt();
 
-                System.out.println("Enter source destination capacity:");
+                System.out.println("Enter Source Destination Capacity:");
 
                 for (int i = 0; i < e; i++) {
                     int u = sc.nextInt();
