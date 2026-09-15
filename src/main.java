@@ -11,6 +11,7 @@ import texthack.dynamicprogramming.SmithWaterman;
 import texthack.dynamicprogramming.IntervalDP;
 import texthack.dynamicprogramming.TSP;
 import texthack.networkflow.FordFulkerson;
+import texthack.networkflow.EdmondsKarp;
 
 public class main {
 
@@ -31,6 +32,7 @@ public class main {
         System.out.println("10. Interval DP");
         System.out.println("11. Bitmask DP - TSP");
         System.out.println("12. Ford-Fulkerson");
+        System.out.println("13. Edmonds-Karp");
 
         System.out.print("\nEnter Choice: ");
         int choice = sc.nextInt();
@@ -194,6 +196,34 @@ public class main {
                 int sink = sc.nextInt();
 
                 FordFulkerson.findMaxFlow(graph, source, sink);
+                break;
+
+            case 13:
+                System.out.print("Enter Number of Vertices: ");
+                int v2 = sc.nextInt();
+
+                int[][] graph2 = new int[v2][v2];
+
+                System.out.print("Enter Number of Edges: ");
+                int e2 = sc.nextInt();
+
+                System.out.println("Enter Source Destination Capacity:");
+
+                for (int i = 0; i < e2; i++) {
+                    int u = sc.nextInt();
+                    int w = sc.nextInt();
+                    int capacity = sc.nextInt();
+
+                    graph2[u][w] = capacity;
+                }
+
+                System.out.print("Enter Source: ");
+                int source2 = sc.nextInt();
+
+                System.out.print("Enter Sink: ");
+                int sink2 = sc.nextInt();
+
+                EdmondsKarp.findMaxFlow(graph2, source2, sink2);
                 break;
 
             default:
