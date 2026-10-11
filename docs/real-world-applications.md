@@ -33,7 +33,7 @@ Sequence overlap is not the same as factual correctness. A response can reuse re
 - Comparing identifiers or short text fields with small spelling variations.
 - Supporting search suggestions or data-cleaning workflows.
 
-Edit distance is not currently described as part of the LMS grading score. It could be evaluated as a separate, carefully weighted signal for spelling variation in a future change, with tests to ensure it does not reward conceptually incorrect answers.
+DBMS_LMS now includes a separate, bounded Python token edit-distance signal inspired by this algorithm. It supports narrowly defined one-character spelling variants on sufficiently long tokens and supplements (rather than replaces) semantic, lexical, synonym, and contradiction evidence. Regression tests cover typo tolerance, unrelated answers, empty input, and bounded output. Its impact on real grading accuracy still needs evaluation against teacher-reviewed answers before claiming a quality improvement.
 
 ## 3. Pattern matching and search
 
