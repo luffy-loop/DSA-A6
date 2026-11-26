@@ -1,6 +1,14 @@
-# DSA-A6 — Data Structures and Algorithms
+# DSA-A6 — Java Algorithms & Object-Oriented Programming
 
-A Java repository of algorithm implementations developed as part of my DSA learning journey. The code covers dynamic programming, pattern matching, and network-flow algorithms.
+A Java coursework repository covering data structures and algorithms (DSA), advanced object-oriented programming (AOOP), and laboratory debugging exercises.
+
+## Coursework areas
+
+| Directory | Focus |
+| --- | --- |
+| [DSA](DSA/) | Dynamic programming, pattern matching and network flow |
+| [AOOP](AOOP/) | Object-oriented programming practice and lab exercises |
+| [AOOP-093](AOOP-093/) | Additional Java laboratory debugging exercises |
 
 ## Topics
 
@@ -16,35 +24,36 @@ A Java repository of algorithm implementations developed as part of my DSA learn
 ### Network flow
 - **Ford–Fulkerson** and **Edmonds–Karp** maximum-flow algorithms.
 
+## Object-oriented programming
+
+- [CO1 practice](AOOP/CO1/): BankAcc, Employee, Library, Product and Student examples.
+- [AOOP lab](AOOP/LAB/): SmartWayPoint.java.
+- [AOOP-093 lab L01](AOOP-093/LAB/L01/): Bug1.java and Bug2.java debugging exercises.
+
 ## From coursework to application
 
 This repository remains the home of the Java coursework and its learning history. Selected ideas from the dynamic-programming and text-matching work have also informed a separate practical project: [DBMS_LMS](https://github.com/luffy-loop/DBMS_LMS), a full-stack Learning Management System with an AI-assisted answer-grading engine.
 
 In particular, the LMS contains a Python token-level sequence-alignment heuristic inspired by the general idea of sequence alignment. It supplements lexical and semantic evidence to help recognize equivalent phrasing in student answers. It is an adaptation, not a direct import or line-for-line port of the Java code.
 
-See [Real-World Applications](docs/real-world-applications.md) for the mapping between coursework concepts and the LMS, implementation links, and reliability boundaries.
+See [Real-World Applications](DSA/docs/real-world-applications.md) for the mapping between coursework concepts and the LMS, implementation links, and reliability boundaries.
 
 ## Repository structure
 
 ```text
-src/
-└── texthack/
-    ├── dynamicprogramming/
-    │   ├── EditDistance.java
-    │   ├── IntervalDP.java
-    │   ├── NeedlemanWunsch.java
-    │   ├── SmithWaterman.java
-    │   └── TSP.java
-    ├── networkflow/
-    │   ├── EdmondsKarp.java
-    │   └── FordFulkerson.java
-    └── patternmatching/
-        ├── KMP.java
-        ├── MultiPatternMatching.java
-        ├── Naive.java
-        ├── RabinKarp.java
-        ├── SuffixArrayLCP.java
-        └── ZFunction.java
+DSA-A6/
+├── DSA/
+│   ├── docs/
+│   └── src/texthack/
+│       ├── dynamicprogramming/
+│       ├── networkflow/
+│       └── patternmatching/
+├── AOOP/
+│   ├── CO1/
+│   └── LAB/
+├── AOOP-093/
+│   └── LAB/L01/
+└── README.md
 ```
 
 ## Running
